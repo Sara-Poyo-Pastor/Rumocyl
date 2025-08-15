@@ -1,0 +1,307 @@
+:root {
+  --bg: #0b0b0c;
+  --text: #ffffff;
+  --muted: #6b7280;
+  --primary: #111827;
+  --accent: #111;
+  --white: #fff;
+  --card: #ffffff;
+  --shadow: rgba(0,0,0,0.08);
+  --pill: #111;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; font-family: system-ui, Arial, sans-serif; color: var(--text); background: #f6f7f9; }
+
+body {
+  background-color: #f6f7f9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+}
+
+
+/* Layout */
+.container { width: 100%; margin: 0 auto; padding: 16px;}
+section { margin: 40px 0; padding-left: 24px; padding-right: 24px;}
+h1,h2,h3 { margin: 0 0 8px; }
+h2 {
+  background-color: #111827; /* color de fondo del recuadro */
+  color: white; /* color del texto */
+  padding: 12px 20px; /* espacio interno */
+  margin: 40px 0; /* separación con otros elementos */
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center; /* centra el texto */
+  width: 100vw; /* ocupa todo el ancho visible */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* para que se centre aunque esté dentro de un container */
+}
+
+h3 { font-size: 18px; color: var(--primary); }
+p { 
+  line-height: 1.6;
+  font-size: 1.5rem; 
+}
+.muted{
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+
+/* Hero */
+.hero {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 40vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* que se vea como un background cover */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 5vw;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.65) 70%
+  );
+  display: grid;
+  gap: 12px;
+  place-items: center;
+  border-radius: 16px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.subtitle {
+  opacity: 1;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.hero-nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+
+
+/* Buttons / Pills / Links */
+.btn {
+  background: var(--white);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+.btn:hover { filter: brightness(0.95); 
+  transition: filter 0.2s ease; 
+background-color: white;
+color: black}
+.btn-outline { 
+  background: transparent; 
+  color: var(--white); 
+  border: 1px solid rgba(255,255,255,0.7) 
+}
+.btn-contact{
+   background: var(--primary);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+.btn-contact:hover { filter: brightness(0.95); 
+  transition: filter 0.2s ease; 
+  background-color: rgb(160, 160, 160);
+  color: black;
+}
+.btn.small { padding: 8px 12px; font-size: 14px; }
+.pill {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.pill-outline {
+  display: inline-block;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #334155;
+}
+.link { color: #1f2937; font-weight: 600; text-decoration: underline; }
+
+/* Grid / Cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.grid-two { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px var(--shadow);
+  overflow: hidden;
+  border: 1px solid #eef0f3;
+}
+
+.card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.card-body { padding: 16px; display: grid; gap: 10px;}
+.card-split { display: grid; place-items: center;; }
+#contacto .split {
+  grid-template-columns: 1fr; /* Si hay solo un elemento, que pueda crecer */
+  justify-items: center; /* Centrar */
+}
+#contacto .card {
+  width: 50%;
+  max-width: 600px; 
+}
+
+.meta { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+
+/* Masonry (simple columns) */
+.masonry { columns: 2; gap: 12px; }
+@media (min-width: 900px) { .masonry { columns: 3; } }
+.masonry-item { display: block; overflow: hidden; border-radius: 12px; }
+.masonry-item img { width: 100%; display: block; transition: transform .2s ease; }
+.masonry-item:hover img { transform: scale(1.02); }
+
+
+
+
+/* Form */
+.form input, .form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #dbe1e8;
+  outline: none;
+}
+.form input:focus, .form textarea:focus { border-color: #94a3b8; }
+
+/* Map */
+.map { width: 100%; height: 280px; border: 0; }
+
+/* Footer */
+.footer {
+  margin: 40px 0;
+  text-align: center;
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 1%;
+}
+
+.footer-icon {
+  color: var(--white);
+  transition: color 0.3s ease;
+}
+
+.footer-icon:hover {
+  color: #E1306C; /* color oficial de Instagram */
+}
+
+/* Loader */
+.loader {
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  background: rgba(255,255,255,0.7);
+  font-weight: 700;
+}
+
+#root { position: relative; z-index: 2; }
+
+/* Capas para el cross-fade del fondo */
+.bg-rotator,
+.bg-rotator-next {
+  position: fixed;
+  inset: 0;
+  z-index: 0;                        /* por detrás del contenido */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Fundido entre capas */
+  transition: opacity 0.8s ease-in-out;
+  opacity: 0;                        /* ocultas por defecto */
+
+  /* “Apaga” la foto sin volverla blanca: mezcla con negro */
+  background-color: rgba(0,0,0,0.4); /* ajusta 0.3–0.6 a tu gusto */
+  background-blend-mode: multiply;
+
+  /* toque opcional */
+  filter: saturate(.9) brightness(.95);
+}
+
+/* La capa visible */
+.bg-rotator.is-active,
+.bg-rotator-next.is-active {
+  opacity: 0.5;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+  .logo {
+    width: 140px;
+  }
+  .subtitle {
+    font-size: 14px;
+  }
+  .hero-nav {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  p{
+    font-size: 1rem;
+  }
+}
